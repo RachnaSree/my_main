@@ -23,6 +23,7 @@ variable "instance_names" {
 resource "aws_instance" "ec2_instances" {
   for_each      = toset(var.instance_names) # loop through instance names
   ami           = data.aws_ami.amazon_linux.id
+  security_group = "id of sg"
   instance_type = "t2.micro"
 
   tags = {
